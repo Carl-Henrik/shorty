@@ -6,10 +6,13 @@ class LinksController < ApplicationController
     @link = Link.new
   end
 
-  # Sets up a new link object with atributes passed from view trew the params hash and saves it to db.
-  # Redirects to home#index if successful. Renders new if not.
+  # Sets up a new link object with url attribute from params hash and the next available id in the db.
+  # Sends link object to HashGenerator getting a string back to set url_short attribute.
+  # Redirects to home#index if object is saved successfuly. Renders new if not.
   def create
-    @link = Link.new(link_params)
+    @link = Link.new(id: Link.maximum(:id).next, url: link_params[:url])
+    @link[:url_short] = HashGenerator.create_hash(@link)
+
     if  @link.save
       redirect_to root_path, notice: 'Link was successfully created.'
     else

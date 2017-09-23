@@ -16,10 +16,9 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
   # Sends a post to links controller with link object attributes in params hash
   # Checks link count to se if theres been a new link saved.
   # Checks to see that redirection to home#index works as intended.
-  # For some reason it doesn't pass uniqueness validation when using the url_short from the fixture (@link.url_short). Will have to revisit
   test "should create link" do
     assert_difference('Link.count') do
-      post links_url, params: { link: { url: @link.url, url_short: "fssd534" } }
+      post links_url, params: { link: { url: @link.url } }
     end
     assert_redirected_to root_path
   end
@@ -33,5 +32,4 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_path
   end
-
 end
