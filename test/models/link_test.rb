@@ -3,7 +3,7 @@ require 'test_helper'
 class LinkTest < ActiveSupport::TestCase
   def setup
     @link = Link.new(url: "google.com", url_short: "3f4d")
-    @link2 = @link.dup
+
   end
 
 
@@ -31,7 +31,9 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test 'invalid with duplicate url_short' do
-    refute @link2.valid?, 'link is valid with duplicate url_short.'
+    link2 = @link.dup
+    @link.save
+    refute link2.valid?, 'link is valid with duplicate url_short.'
   end
 
 end
