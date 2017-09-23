@@ -1,9 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  url: MyString
-  url_short: MyString
+ url: "www.test.se"
+ url_short: "dfgdf456"
 
 two:
-  url: MyString
-  url_short: MyString
+ url: "www.bredband2.com"
+ url_short: "yet6ds"
