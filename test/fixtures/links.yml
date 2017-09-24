@@ -1,7 +1,7 @@
 one:
- url: "www.test.se"
+ url: "http://www.test.se"
  url_short: "dfgdf456"
 
 two:
- url: "www.bredband2.com"
- url_short: "yet6ds"
+ url: "http://www.bredband2.com"
+ url_short: "exists"
