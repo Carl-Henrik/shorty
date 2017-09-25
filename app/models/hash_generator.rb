@@ -1,9 +1,9 @@
 # Using gem https://github.com/peterhellberg/hashids.rb
 class HashGenerator
-  # Takes a link object with missing url_short attribute
-  def self.create_hash(url)
-    # encodes the url using a random number.
-    url_short = Hashids.new(url)
-    url_short.encode(1 + rand(100000))
+  # Takes an attribute to encode
+  def self.create_hash(in_value)
+    # encodes the attribute using a random number as salt.
+    out_value = Hashids.new(in_value)
+    out_value.encode(1 + rand(100000))
   end
 end

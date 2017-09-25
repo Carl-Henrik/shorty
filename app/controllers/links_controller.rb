@@ -6,17 +6,12 @@ class LinksController < ApplicationController
     @link = Link.new
   end
 
-  # Sends the url from the params hash to HashGenerator which returns a new url_short
-  # Sets both attributes in the link object and proceeds to save to db.
-  # Calls ensure_unique to verify uniqueness of url_short.
+  # Sets up a new link object with :url from params hash
+  # Sends the object to UniqueAttributesAssigner which returns a new object with correct unique attributes
   # Redirects to home#index if object is saved successfuly. Renders new if not.
   def create
-    link_attributes = {
-      url: link_params[:url],
-      url_short: HashGenerator.create_hash(link_params[:url])
-    }
-    @link = Link.new(link_attributes)
-    @link = UniqueShortValidator.ensure_unique(@link)
+    @link = Link.new(url: link_params[:url])
+    @link = UniqueAttributesAssigner.ensure_unique(@link)
 
     if  @link.save
       redirect_to root_path, notice: 'Link was successfully created.'
