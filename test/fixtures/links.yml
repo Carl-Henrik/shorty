@@ -1,7 +1,9 @@
 one:
  url: "http://www.test.se"
  url_short: "dfgdf456"
+ admin_code: "gfd34"
 
 two:
  url: "http://www.bredband2.com"
  url_short: "exists"
+ admin_code: "h33456g"

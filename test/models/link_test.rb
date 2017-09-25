@@ -4,7 +4,7 @@ class LinkTest < ActiveSupport::TestCase
 
   #Setting up test object. No need for fixture since it's one object only.
   def setup
-    @link = Link.new(url: "google.com", url_short: "3f4d")
+    @link = Link.new(url: "google.com", url_short: "3f4d", admin_code: "fj35")
   end
 
 
@@ -38,8 +38,26 @@ class LinkTest < ActiveSupport::TestCase
   #Testing behavior when url short is a duplicate of an existing database entry
   test 'invalid with duplicate url_short' do
     link2 = @link.dup
+    link2.admin_code = "unique"
     @link.save
     refute link2.valid?, 'link is valid with duplicate url_short.'
+    assert_not_nil @link.errors[:url_short], 'Theres no validation error for duplicate url short.'
+  end
+
+  #Testing behavior when admin_code is missing from link object
+  test 'invalid without admin_code' do
+    @link.admin_code = nil
+    refute @link.valid?, 'link is valid without an admin code.'
+    assert_not_nil @link.errors[:admin_code], 'Theres no validation error for missing admin code.'
+  end
+
+  #Testing behavior when admin_code is a duplicate of an existing database entry
+  test 'invalid with duplicate admin_code' do
+    link2 = @link.dup
+    link2.url_short = "unique"
+    @link.save
+    refute link2.valid?, 'link is valid with duplicate admin_code.'
+    assert_not_nil @link.errors[:admin_code], 'Theres no validation error for duplicate admin code.'
   end
 
 end

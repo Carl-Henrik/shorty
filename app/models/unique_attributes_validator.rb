@@ -1,4 +1,4 @@
-class UniqueShortValidator
+class UniqueAttributesValidator
   # Validates the object. Enters a loop if url_short already exists to ensure a unique value
   def self.ensure_unique(link)
     link.valid?
