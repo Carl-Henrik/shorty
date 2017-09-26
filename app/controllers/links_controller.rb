@@ -31,7 +31,6 @@ class LinksController < ApplicationController
   # redirects user original url
   def short_redirect
     @link = Link.find_by(url_short: params[:url_short])
-
     if @link.nil?
       redirect_to root_path
     else
