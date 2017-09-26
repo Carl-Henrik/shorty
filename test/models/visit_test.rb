@@ -2,7 +2,7 @@ require 'test_helper'
 
 class VisitTest < ActiveSupport::TestCase
   def setup
-    @visit = Visit.new()
+    @visit = visits(:one)
   end
 
   #Validation Tests
