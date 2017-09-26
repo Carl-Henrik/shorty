@@ -30,6 +30,7 @@ class LinksController < ApplicationController
   # uses contents of params hash to find matching link entry in db
   # redirects user original url
   def short_redirect
+    RequestLogger.logg_request(request.env)
     @link = Link.find_by(url_short: params[:url_short])
     if @link.nil?
       redirect_to root_path
