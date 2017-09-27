@@ -29,8 +29,18 @@ class LinksController < ApplicationController
 
   # uses contents of params hash to find matching link entry in db
   # redirects user original url
+  # captures desired data from request.env and sends it RequestLogger as hash
   def short_redirect
-    RequestLogger.logg_request(request.env)
+
+    env = {
+      remote_host: request.env["REMOTE_HOST"],
+      remote_addr: request.env["REMOTE_ADDR"],
+      http_user_agent: request.env["HTTP_USER_AGENT"],
+      http_referer: request.env["HTTP_REFERER"],
+      request_uri: request.env["REQUEST_URI"]
+    }
+
+    RequestLogger.logg_request(env)
     @link = Link.find_by(url_short: params[:url_short])
     if @link.nil?
       redirect_to root_path

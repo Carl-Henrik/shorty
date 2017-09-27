@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # Other gems
 gem 'hashids'
 gem 'valid_url'
+gem 'useragent'
 
 
 group :development, :test do

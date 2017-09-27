@@ -1,3 +1,3 @@
 class Visit < ApplicationRecord
-  validates :request_uri, :http_user_agent, :remote_addr, :remote_host, :http_referer, presence: true
+  validates :remote_host, :remote_addr, :http_user_agent, :http_referer, :request_uri, presence: true
 end
