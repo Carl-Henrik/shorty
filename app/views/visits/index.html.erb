@@ -1,0 +1,28 @@
+<% if @visits.empty? %>
+  <div class="col-md-10 col-md-offset-1 text-center">
+    <h1 ><b>No visits to show!</b></h1>
+    <p >That's just sad, no users :(</p>
+
+  </div>
+<% else %>
+  <table class="table table-striped table-bordered table-hover table-responsive" >
+    <thead class="thead-inverse">
+      <tr>
+        <th>URL</th>
+        <th>user agent</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @visits.each do |visit| %>
+        <tr>
+
+          <td><%= visit.url.titleize %></td>
+          <td><%= visit.user_agent %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </br>
+  <%= link_to 'Empty logg', root_path %>
+<% end %>

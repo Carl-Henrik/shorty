@@ -41,6 +41,7 @@ gem 'hashids'
 gem 'valid_url'
 gem 'useragent'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

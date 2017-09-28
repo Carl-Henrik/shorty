@@ -2,7 +2,11 @@
   <div class="inner">
     <nav>
       <ul class="nav masthead-nav">
-        <li class="active"><a href="#">Admin</a></li>
+        <% if admin_signed_in? %>
+          <li class="active"><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
+        <% else %>
+          <li class="active"><%= link_to "Sign in", new_admin_session_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

@@ -20,7 +20,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Link.count') do
       post links_url, params: { link: { url: @link.url } }
     end
-    assert_redirected_to root_path
+    assert_redirected_to link_url(Link.last)
   end
 
   # Sends delete to links controller
