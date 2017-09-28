@@ -1,5 +1,8 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:destroy]
+  before_action :set_link, only: [:show, :destroy]
+
+  def show
+  end
 
   # Sets up a new link object (without saving to database) and makes it available to the view
   def new
@@ -14,7 +17,7 @@ class LinksController < ApplicationController
     @link = UniqueAttributesAssigner.ensure_unique(@link)
 
     if  @link.save
-      redirect_to root_path, notice: 'Link was successfully created.'
+      redirect_to @link, notice: 'Shorty was successfully created.'
     else
       render :new
     end
@@ -31,7 +34,6 @@ class LinksController < ApplicationController
   # redirects user original url
   # captures desired data from request.env and sends it RequestLogger as hash
   def short_redirect
-
     env = {
       remote_host: request.env["REMOTE_HOST"],
       remote_addr: request.env["REMOTE_ADDR"],
@@ -46,6 +48,18 @@ class LinksController < ApplicationController
       redirect_to root_path
     else
       redirect_to @link.url
+    end
+  end
+
+  # Gets admin_code passed via params from form data.
+  # Redirects to root f there is no match
+  # redirects to show action for fetched object if theres a match.
+  def search
+    @link = Link.find_by(admin_code: params[:admin_code])
+    if @link.nil?
+      redirect_to root_path
+    else
+      redirect_to @link
     end
   end
 

@@ -1,0 +1,8 @@
+
+<%= form_tag({controller: "links", action: "search"}, method: "get", class: "form-inline") do %>
+  <div class="form-group">
+  <%= label_tag(:search, "Code:") %>
+  <%= text_field_tag(:admin_code, nil, {placeholder: "Your Shorty Code", class: 'form-control'}) %>
+  </div>
+  <%= submit_tag("Fetch Shorty", :class=>'btn btn-default') %>
+<% end %>
