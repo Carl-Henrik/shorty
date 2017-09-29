@@ -1,5 +1,5 @@
 <%= form_for(link, :html => { :class => "form-inline" }) do |f| %>
-  <% if link.errors.any? %>
+<!--  <% if link.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
       <ul>
@@ -8,12 +8,12 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %> -->
 
   <div class="form-group">
-    <label for="inputURL">URL</label>
-    <%= f.text_field :url, autofocus: true, placeholder: 'Your url', id: "inputURL", class: "form-control" %>
+    <label for="inputURL">URL:</label>
+    <%= f.text_field :url, autofocus: true, placeholder: 'Your url', id: "inputURL", class: 'form-control' %>
   </div>
-    <%= f.submit "Create Shorty",:class=>'btn btn-default' %>
+    <%= f.submit "Create Shorty",:class=>'btn btn-primary' %>
 
 <% end %>

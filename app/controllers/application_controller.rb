@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   # Redirects user to visits#index after successful login
   protected
   def after_sign_in_path_for(resource)
-    visits_index_path
+    visits_path
   end
 end

@@ -13,5 +13,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require clipboard
 //= require bootstrap-sprockets
 //= require_tree .
+
+// Script adding clipboard functionality via gem https://github.com/sadiqmmm/clipboard-rails
+$(document).on('ready turbolinks:load', function(){
+  var clipboard = new Clipboard('.clipboard-btn');
+});
+
+$(document).on('ready turbolinks:load', function(){
+  var bgArray = ['1.jpg', '2.jpg','3.jpg', '4.jpg', '5.jpg', '6.jpg'];
+  var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+  var path = '/bg/';
+  var imageUrl = path + bg;
+  $('body').css('background-image', 'url(' + imageUrl +')', 'no-repeat');
+});

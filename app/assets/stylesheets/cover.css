@@ -2,6 +2,23 @@
  * Globals
  */
 
+ .card {
+   background-color: white;
+   padding-top: 80px;
+   padding-bottom: 100px;
+
+ }
+
+ .card-table {
+   background-color: white;
+   padding: 40px;
+
+ }
+
+ .bwidth {
+    width: 78px !important;
+}
+
 /* Links */
 a,
 a:focus,
@@ -27,7 +44,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background: url(/bg/3.jpg) no-repeat center center fixed; 
+  
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -36,7 +53,7 @@ background-size: cover;
 body {
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */

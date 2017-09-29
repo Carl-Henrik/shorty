@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   resources :links, only: [:new, :show, :create, :destroy] do
       get 'search', on: :collection
     end
-    get 'visits/index'
+    resources :visits do
+      collection do
+        get 'empty_logg'
+        get 'index'
+      end
+    end
+
   root to: "links#new"
   # Sending incoming urls not matched to existing routes via get to short_redirect method in links controller
   # the entered url is stored in params hash with key :url_short
