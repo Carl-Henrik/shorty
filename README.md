@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Shorty
+Webb App used for creating short links from Users URLs.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Installation using docker-compose:
+1. Replace config/database.yml with config/database.docker.yml
+2. Run `docker-compose up -d`
+3. Run `docker exec shorty_web_1 rails db:create`
+4. Run `docker exec shorty_web_1 rails db:migrate`
+5. Run `docker exec shorty_web_1 rails db:migrate RAILS_ENV=test`
