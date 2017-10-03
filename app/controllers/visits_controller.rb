@@ -10,6 +10,7 @@ class VisitsController < ApplicationController
   # redirects to Visit#index
   def empty_logg
     Visit.delete_all
+    flash[:success] = 'Logg was successfully deleted!'
     redirect_to visits_path
   end
 end

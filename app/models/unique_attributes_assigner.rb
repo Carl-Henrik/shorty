@@ -16,7 +16,6 @@ class UniqueAttributesAssigner
       link.admin_code = HashGenerator.create_hash(link.url_short)
       link.valid?
     end
-
     return link
   end
 end

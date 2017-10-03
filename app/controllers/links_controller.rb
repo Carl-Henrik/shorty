@@ -1,6 +1,8 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :destroy]
 
+  # renders show view.
+  # before_action runs set_link making the right link object available to the view
   def show
   end
 
@@ -17,7 +19,8 @@ class LinksController < ApplicationController
     @link = UniqueAttributesAssigner.ensure_unique(@link)
 
     if  @link.save
-      redirect_to @link, notice: 'Shorty was successfully created.'
+      flash[:success] = 'Shorty was successfully created!'
+      redirect_to @link
     else
       render :new
     end
@@ -27,7 +30,8 @@ class LinksController < ApplicationController
   # Redirects to home#index
   def destroy
     @link.destroy
-    redirect_to root_path, notice: 'Link was successfully destroyed.'
+    flash[:success] = 'Shorty was successfully deleted!'
+    redirect_to root_path
   end
 
   # uses contents of params hash to find matching link entry in db
@@ -41,7 +45,6 @@ class LinksController < ApplicationController
       http_referer: request.env["HTTP_REFERER"],
       request_uri: request.env["REQUEST_URI"]
     }
-
     RequestLogger.logg_request(env)
     @link = Link.find_by(url_short: params[:url_short])
     if @link.nil?
@@ -52,11 +55,12 @@ class LinksController < ApplicationController
   end
 
   # Gets admin_code passed via params from form data.
-  # Redirects to root f there is no match
+  # Redirects to root if there is no match
   # redirects to show action for fetched object if theres a match.
   def search
     @link = Link.find_by(admin_code: params[:admin_code])
     if @link.nil?
+      flash[:error] = 'No match for supplied code.'
       redirect_to root_path
     else
       redirect_to @link

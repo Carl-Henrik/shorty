@@ -6,7 +6,6 @@ class RequestLogger
   # Creates a Visit object and assigns attributes from the final hash and proceeds to save to db
   def self.logg_request(env)
     @visit_attributes = env
-
     unless @visit_attributes[:http_user_agent].nil?
       detect_user_agent
     end

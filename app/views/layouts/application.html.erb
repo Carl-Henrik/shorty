@@ -11,14 +11,18 @@
   </head>
 
   <body>
-    <div class="site-wrapper">
-      <div class="site-wrapper-inner">
-        <div class="cover-container">
-          <%= render 'layouts/partials/menu'%>
-          <%= yield %>
-          <%= render 'layouts/partials/footer'%>
-        </div>
-      </div>
-    </div>
+
+
+     <div class="site-wrapper">
+       <div class="site-wrapper-inner">
+         <div class="cover-container">
+           <%= flash_messages %>
+           <%= render 'layouts/partials/menu'%>
+           <%= yield %>
+           <%= render 'layouts/partials/footer'%>
+         </div>
+       </div>
+     </div>
+
   </body>
 </html>
