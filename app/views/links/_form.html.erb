@@ -1,15 +1,4 @@
 <%= form_for(link, :html => { :class => "form-inline" }) do |f| %>
-<!--  <% if link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
-      <ul>
-      <% link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %> -->
-
   <div class="form-group">
     <label for="inputURL">URL:</label>
     <%= f.text_field :url, autofocus: true, placeholder: 'Your url', id: "inputURL", class: 'form-control' %>

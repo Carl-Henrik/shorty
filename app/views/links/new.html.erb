@@ -1,3 +1,15 @@
+<div class="card">
+  <h1>Welcome to shorty links!</h1>
+  <p class="lead">Create a new link or view/remove an old one</p>
+  <p><%= render 'form', link: @link %></p>
+  <p><%= render 'search_form' %></p>
+  <% if admin_signed_in? %>
+    <p><%= link_to "Show Logg", visits_path %></p>
+  <% end %>
+</div>
+
+
+<!-- Script to activate modal if Admin.all returns an empty array (admins table is empty) -->
 <% if Admin.all == [] %>
   <script type="text/javascript">
       $(document).ready(function(){
@@ -6,12 +18,3 @@
   </script>
   <%= render 'dialog' %>
 <% end %>
-
-
-
-<div class="card">
-  <h1>Welcome to shorty links!</h1>
-  <p class="lead">Create a new link or view/remove an old one</p>
-  <p><%= render 'form', link: @link %></p>
-  <p><%= render 'search_form' %></p>
-</div>
