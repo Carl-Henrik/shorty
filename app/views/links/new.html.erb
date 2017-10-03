@@ -1,3 +1,14 @@
+<% if Admin.all == [] %>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          $("#myModal").modal('show');
+      });
+  </script>
+  <%= render 'dialog' %>
+<% end %>
+
+
+
 <div class="card">
   <h1>Welcome to shorty links!</h1>
   <p class="lead">Create a new link or view/remove an old one</p>

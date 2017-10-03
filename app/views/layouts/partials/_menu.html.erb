@@ -3,7 +3,7 @@
     <nav>
       <ul class="nav masthead-nav">
         <% if admin_signed_in? %>
-          <li class="active"><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
+          <p><li class="active"><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
         <% else %>
           <li class="active"><%= link_to "Sign in", new_admin_session_path %></li>
         <% end %>
