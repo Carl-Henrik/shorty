@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require clipboard
 //= require bootstrap-sprockets
+//= require data-confirm-modal
 //= require_tree .
 
 // Script adding clipboard functionality via gem https://github.com/sadiqmmm/clipboard-rails

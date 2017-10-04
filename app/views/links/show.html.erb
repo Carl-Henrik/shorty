@@ -14,6 +14,9 @@
      <strong>Admin code:</strong>
      <%= @link.admin_code %>
    </p>
-   <p><%= link_to 'Delete Shorty', @link, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Back To Start', root_path %></p>
-  <button class="clipboard-btn btn btn-primary" data-clipboard-text= "<%= root_url + @link.url_short %>">Copy Shorty to clipboard</button>
+   <p><%= link_to 'Delete Shorty', @link, method: :delete, data: { confirm: 'Are you sure you want to do this?', title: 'Delete Shorty!' } %> | <%= link_to 'Back To Start', root_path %></p>
+  <p><button class="clipboard-btn btn btn-primary" data-clipboard-text= "<%= root_url + @link.url_short %>">Copy Shorty to clipboard</button></p>
+  <% if admin_signed_in? %>
+    <p><%= link_to "Show Logg", visits_path %></p>
+  <% end %>
 </div>

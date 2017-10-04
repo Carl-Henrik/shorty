@@ -1,8 +1,8 @@
 <div class="card-table">
-<h1>Visitors Logg</h1></br>
+<h1>Visitors Logg</h1>
 <% if @visits.empty? %>
-    <h1 ><b>No visits to show!</b></h1>
-    <p >That's just sad :(</p>
+    <h2><b>No visits to show!</b></h2></br>
+    <p >That's just sad :(</p></br>
 <% else %>
   <table class="table table-bordered table-striped table-hover table-responsive" >
     <thead class="thead-inverse">
@@ -28,7 +28,6 @@
       <% end %>
     </tbody>
   </table>
-  <p><%= link_to "Empty logg",empty_logg_visits_path, method: :get, data: { confirm: 'Are you sure?' }%> | <%= link_to 'Back To Home', root_path %></p>
 <% end %>
-
+<p><%= link_to "Empty logg",empty_logg_visits_path, method: :get, data: { confirm: 'Are you sure you want to do this?', title: 'Delete logg!' }%> | <%= link_to 'Back To Home', root_path %></p>
 </div>
