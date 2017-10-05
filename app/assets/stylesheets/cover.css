@@ -12,7 +12,8 @@
  .card-table {
    background-color: white;
    padding: 40px;
-
+    height: 1000px;
+    overflow: scroll;
  }
 
  .bwidth {
@@ -44,7 +45,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  
+
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
