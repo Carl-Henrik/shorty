@@ -4,7 +4,7 @@
   <p><%= render 'form', link: @link %></p>
   <p><%= render 'search_form' %></p>
   <% if admin_signed_in? %>
-    <p><%= link_to "Show Logg", visits_path %></p>
+    <p><%= link_to "Show Logg", visits_path %> | <%= link_to "Edit Account", edit_admin_registration_path %></p>
   <% end %>
 </div>
 

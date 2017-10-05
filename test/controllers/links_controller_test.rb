@@ -18,7 +18,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
   # Checks to see that redirection to home/index works as intended.
   test "should create link" do
     assert_difference('Link.count') do
-      post links_url, params: { link: { url: @link.url } }
+      post links_url, params: { link:{ url: @link.url } }
     end
     assert_redirected_to link_url(Link.last)
   end
@@ -46,6 +46,20 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
   # Checks to see that redirection to home/index succeeds
   test "non-existing url_short should redirect to root_path" do
     get "/doesntexist"
+    assert_redirected_to root_path
+  end
+
+  # Sends get to search action in links controller with correct admin code in params hash
+  # Asserts redirect to the link object to verify that the correct object was found
+  test "should find link by correct admin code" do
+    get search_links_url, params: { admin_code: @link.admin_code}
+    assert_redirected_to @link
+  end
+
+  # Sends get to search action in links controller with incorrect admin code in params hash
+  # Asserts redirect to links#new to verify that redirection was handled properly when link was not found.
+  test "Search should redirect to root with incorrect admin code" do
+    get search_links_url, params: { admin_code: "incorrect"}
     assert_redirected_to root_path
   end
 

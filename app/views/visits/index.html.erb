@@ -29,5 +29,7 @@
     </tbody>
   </table>
 <% end %>
-<p><%= link_to "Empty logg",empty_logg_visits_path, method: :get, data: { confirm: 'Are you sure you want to do this?', title: 'Delete logg!' }%> | <%= link_to 'Back To Home', root_path %></p>
+<p><%= link_to 'Back To Home', root_path %> |
+   <%= link_to "Edit Account", edit_admin_registration_path %> |
+   <%= link_to "Empty logg",empty_logg_visits_path, method: :get, data: { confirm: 'Are you sure you want to do this?', title: 'Delete logg!' }%></p>
 </div>

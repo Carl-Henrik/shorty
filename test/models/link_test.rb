@@ -60,4 +60,19 @@ class LinkTest < ActiveSupport::TestCase
     assert_not_nil @link.errors[:admin_code], 'Theres no validation error for duplicate admin code.'
   end
 
+  #Tests regex for adding http:// to url when missing
+  test 'should add http:// if missing' do
+    @link.save
+    @link.reload
+    assert_equal @link.url, "http://google.com"
+  end
+
+  #Tests regex for not adding http:// to url when present
+  test 'should not add http:// if present' do
+    @link.url = "http://google.com"
+    @link.save
+    @link.reload
+    assert_equal @link.url, "http://google.com"
+  end
+
 end

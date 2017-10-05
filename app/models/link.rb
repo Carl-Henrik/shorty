@@ -6,10 +6,15 @@ class Link < ApplicationRecord
   validates :url, url: true
   before_save :add_protocol
 
+  # overriding to use admin_code instead of id with urls
+  def to_param
+    admin_code
+  end
+
   protected
   # Checking with regex if protocol is missing at start of url and adds it if missing.
   def add_protocol
-    unless self.url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
+    unless self.url[/\Ahttp:\/\//i] || self.url[/\Ahttps:\/\//i]
       self.url = "http://#{self.url}"
     end
   end
